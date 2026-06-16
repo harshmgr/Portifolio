@@ -183,9 +183,20 @@ body {
   mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 75%);
 }
 
+/* gray-200 used in terminal command text */
+[data-theme="light"] { --color-gray-200: #1e293b; }
+
 /* SVG connector lines */
 [data-theme="light"] .skill-link { stroke: #93b4d8; }
 [data-theme="light"] #architecture svg line:not(.flow-line) { stroke: #a8c4de; }
+
+/* Architecture node labels — white fill invisible on light glass */
+[data-theme="light"] #architecture text { fill: #1e293b; }
+/* Architecture node box fills — boost opacity so tints show on white */
+[data-theme="light"] #architecture rect { fill-opacity: 0.35; }
+
+/* Skills node circles — swap dark fill for a soft white in light mode */
+[data-theme="light"] .skill-node circle:last-of-type { fill: #f8fafc; }
 
 /* scrollbar */
 [data-theme="light"] ::-webkit-scrollbar-track { background: #c8d8ec; }

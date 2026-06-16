@@ -95,12 +95,15 @@ const PREVIEWS = {
   egm: PreviewByteStream,
 }
 
+const isTouch = typeof window !== 'undefined' && window.matchMedia('(hover: none)').matches
+
 function TiltCard({ project, expanded, onToggle, index }) {
   const ref = useRef(null)
   const [tilt, setTilt] = useState({ x: 0, y: 0 })
   const Preview = PREVIEWS[project.id]
 
   const onMove = e => {
+    if (isTouch) return
     const r = ref.current.getBoundingClientRect()
     const px = (e.clientX - r.left) / r.width - 0.5
     const py = (e.clientY - r.top) / r.height - 0.5
@@ -108,16 +111,16 @@ function TiltCard({ project, expanded, onToggle, index }) {
   }
 
   return (
-    <Reveal delay={index * 0.1}>
+    <Reveal delay={index * 0.1} className="min-w-0">
       <motion.article
         ref={ref}
         onMouseMove={onMove}
         onMouseLeave={() => setTilt({ x: 0, y: 0 })}
-        style={{
+        style={isTouch ? undefined : {
           transform: `perspective(900px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
           transition: 'transform 0.15s ease-out',
         }}
-        className="glass glass-hover h-full p-6 relative overflow-hidden group"
+        className="glass glass-hover h-full p-4 sm:p-6 relative overflow-hidden group"
       >
         {/* accent sweep */}
         <div
@@ -136,8 +139,8 @@ function TiltCard({ project, expanded, onToggle, index }) {
           </span>
         </div>
 
-        <h3 className="mt-4 text-xl font-bold text-white">{project.title}</h3>
-        <p className="mt-2 text-sm text-gray-400 leading-relaxed">{project.summary}</p>
+        <h3 className="mt-4 text-xl font-bold text-white break-words">{project.title}</h3>
+        <p className="mt-2 text-sm text-gray-400 leading-relaxed break-words">{project.summary}</p>
 
         {Preview && (
           <div className="mt-4 h-16 rounded-lg border border-white/5 bg-black/40 px-3 py-2 font-mono text-[10px] leading-relaxed overflow-hidden opacity-80 group-hover:opacity-100 transition-opacity">
@@ -186,7 +189,7 @@ function TiltCard({ project, expanded, onToggle, index }) {
 export default function Projects() {
   const [expanded, setExpanded] = useState(null)
   return (
-    <section id="projects" className="relative mx-auto max-w-6xl px-5 py-28">
+    <section id="projects" className="relative mx-auto max-w-6xl px-5 py-28 overflow-x-hidden">
       <SectionHeading kicker="ls ./projects --featured" title="Featured Projects" />
       <div className="grid md:grid-cols-2 gap-6">
         {projects.map((p, i) => (

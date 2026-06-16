@@ -68,7 +68,7 @@ export default function Navbar({ onOpenPalette, theme, onToggleTheme }) {
         scrolled ? 'glass !rounded-none border-x-0 border-t-0' : ''
       }`}
     >
-      <nav className="mx-auto max-w-6xl flex items-center justify-between px-5 py-3.5">
+      <nav className="mx-auto max-w-6xl flex items-center justify-between gap-2 px-4 sm:px-5 py-3.5">
         <button
           onClick={() => jump('home')}
           className="font-mono text-sm text-white font-bold tracking-tight"
