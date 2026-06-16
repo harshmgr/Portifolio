@@ -77,7 +77,7 @@ export default function Hero() {
         </motion.p>
 
         <motion.h1
-          className="text-5xl sm:text-7xl font-extrabold tracking-tight text-white"
+          className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.45, duration: 0.7 }}
@@ -86,7 +86,7 @@ export default function Hero() {
         </motion.h1>
 
         <motion.h2
-          className="mt-4 flex flex-wrap items-center gap-x-3 text-2xl sm:text-4xl font-bold text-gray-300"
+          className="mt-4 flex flex-wrap items-center gap-x-3 text-xl sm:text-3xl lg:text-4xl font-bold text-gray-300"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.7 }}
@@ -124,7 +124,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-3xl"
+          className="mt-10 sm:mt-16 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 max-w-3xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.1 }}

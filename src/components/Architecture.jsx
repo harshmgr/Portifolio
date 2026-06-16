@@ -81,6 +81,7 @@ export default function Architecture() {
             </button>
           ))}
         </div>
+        <p className="sm:hidden mb-3 text-center font-mono text-[10px] text-gray-600">← scroll to explore diagram →</p>
         <div className="glass p-4 sm:p-8 overflow-x-auto">
           <AnimatePresence mode="wait">
             <motion.div

@@ -115,12 +115,20 @@ export default function Navbar({ onOpenPalette }) {
             <li key={s.id}>
               <button
                 onClick={() => jump(s.id)}
-                className="block w-full text-left px-3 py-2 rounded-lg text-gray-300 hover:bg-white/5"
+                className="block w-full text-left px-3 py-3 min-h-[44px] rounded-lg text-gray-300 hover:bg-white/5 active:bg-white/10"
               >
                 {s.label}
               </button>
             </li>
           ))}
+          <li>
+            <button
+              onClick={() => { setOpen(false); onOpenPalette() }}
+              className="block w-full text-left px-3 py-3 min-h-[44px] rounded-lg font-mono text-xs text-gray-500 hover:bg-white/5 active:bg-white/10"
+            >
+              ⌘ Command palette (Ctrl+K)
+            </button>
+          </li>
         </ul>
       )}
     </motion.header>

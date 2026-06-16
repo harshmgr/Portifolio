@@ -24,10 +24,10 @@ export default function Contact() {
             <span className="h-3 w-3 rounded-full bg-red-500/70" />
             <span className="h-3 w-3 rounded-full bg-yellow-500/70" />
             <span className="h-3 w-3 rounded-full bg-emerald-500/70" />
-            <p className="ml-3 font-mono text-xs text-gray-500">harsh@portfolio: ~/contact</p>
+            <p className="ml-3 font-mono text-[10px] sm:text-xs text-gray-500 truncate">harsh@portfolio: ~/contact</p>
           </div>
 
-          <div className="p-6 font-mono text-sm space-y-5">
+          <div className="p-4 sm:p-6 font-mono text-xs sm:text-sm space-y-4 sm:space-y-5">
             {terminalCommands.map(c => {
               const executed = ran.includes(c.cmd)
               return (

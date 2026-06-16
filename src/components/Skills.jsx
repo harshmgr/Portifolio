@@ -23,12 +23,14 @@ export default function Skills() {
     <section id="skills" className="relative mx-auto max-w-6xl px-5 py-28">
       <SectionHeading kicker="tech --graph" title="Skill Constellation" />
       <Reveal>
-        <div className="glass p-4 sm:p-8 relative overflow-hidden">
+        <div className="glass p-4 sm:p-8 relative">
+          <div className="overflow-x-auto">
+          <div className="min-w-[480px]">
           <svg
             viewBox={`0 0 ${W} ${H}`}
             className="w-full h-auto select-none"
             role="img"
-            aria-label="Interactive network of technologies. Hover a node to highlight related skills."
+            aria-label="Interactive network of technologies. Tap or hover a node to highlight related skills."
           >
             <defs>
               <radialGradient id="nodeGlow">
@@ -85,6 +87,7 @@ export default function Skills() {
                 style={{ opacity: isDim(s.id) ? 0.18 : 1 }}
                 onMouseEnter={() => setHovered(s.id)}
                 onMouseLeave={() => setHovered(null)}
+                onTouchStart={() => setHovered(id => id === s.id ? null : s.id)}
                 onFocus={() => setHovered(s.id)}
                 onBlur={() => setHovered(null)}
                 tabIndex={0}
@@ -101,10 +104,10 @@ export default function Skills() {
                   strokeWidth="1.5"
                 />
                 <text
-                  x={s.x * W} y={s.y * H + s.size / 2.4 + 16}
+                  x={s.x * W} y={s.y * H + s.size / 2.4 + 18}
                   textAnchor="middle"
                   fill={hovered === s.id ? '#a5f3fc' : '#9ca3af'}
-                  fontSize="12"
+                  fontSize="14"
                   fontFamily="var(--font-mono)"
                 >
                   {s.label}
@@ -112,9 +115,11 @@ export default function Skills() {
               </g>
             ))}
           </svg>
+          </div>
+          </div>
 
-          {/* hover detail readout */}
-          <div className="pointer-events-none absolute top-4 right-4 sm:top-6 sm:right-6 min-h-[3.5rem]" aria-live="polite">
+          {/* detail readout — inline below SVG on mobile, absolute on sm+ */}
+          <div className="mt-3 min-h-[3.5rem] sm:mt-0 sm:pointer-events-none sm:absolute sm:top-6 sm:right-6" aria-live="polite">
             {active && (
               <motion.div
                 initial={{ opacity: 0, y: 6 }}
@@ -131,7 +136,7 @@ export default function Skills() {
         </div>
       </Reveal>
       <p className="mt-4 text-center font-mono text-xs text-gray-600">
-        hover or focus a node to trace its connections
+        tap or hover a node to trace its connections
       </p>
     </section>
   )

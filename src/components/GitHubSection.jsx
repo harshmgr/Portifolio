@@ -17,7 +17,8 @@ const LEVEL_COLORS = ['#101720', '#0e3a5f', '#1565a8', '#1f8fd6', '#22d3ee']
 
 function Heatmap({ counts }) {
   return (
-    <div className="overflow-x-auto pb-2">
+    <div className="overflow-x-auto pb-2 touch-pan-x">
+      <p className="sm:hidden mb-2 font-mono text-[10px] text-gray-600">← scroll to view full year →</p>
       <div className="flex gap-[3px] min-w-[720px]" role="img" aria-label="Contribution activity heatmap for the last year">
         {Array.from({ length: WEEKS }, (_, w) => (
           <div key={w} className="flex flex-col gap-[3px]">

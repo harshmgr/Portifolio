@@ -23,7 +23,7 @@ export default function Experience() {
           aria-hidden="true"
         />
 
-        <ol className="space-y-14">
+        <ol className="space-y-8 sm:space-y-14">
           {experience.map((e, i) => {
             const left = i % 2 === 0
             return (
@@ -46,7 +46,7 @@ export default function Experience() {
                   y={20}
                   className={`ml-8 sm:ml-0 sm:w-[calc(50%-2.5rem)] ${left ? '' : 'sm:ml-auto'}`}
                 >
-                  <article className="glass glass-hover p-6">
+                  <article className="glass glass-hover p-4 sm:p-6">
                     <p className="font-mono text-xs text-cyan-400">{e.period}</p>
                     <h3 className="mt-1 text-lg font-bold text-white">{e.role}</h3>
                     <p className="text-sm text-gray-500">{e.org}</p>
