@@ -13,7 +13,7 @@ function useTheme() {
       const saved = localStorage.getItem('portfolio-theme')
       if (saved) return saved
     } catch { /* private mode */ }
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    return 'dark'
   })
 
   useEffect(() => {
